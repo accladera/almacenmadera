@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="row">
+    <div class="col-12 mb-40">
+      <h2 class="scvs-btn-back">
+        Módulo Gestión de Materiales
+      </h2>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-lg-right">
+      <button ejs-button class="btn btn-primary py-2" type="button" (click)="onCreateStockMaterial()">
+        Agregar nuevo material
+      </button>
+    </div>
+  </div>
+
+  <div class="row scvs-table-container mt-40">
+    <div class="col-12 scvs-title mt-10 mb-10">
+      Materiales
+    </div>
+
+    <div class="col-12 mt-4">
+      <ejs-grid
+        class="mt-4"
+        #grid
+        id="gridMateriales"
+        [dataSource]="dataMateriales"
+        [allowPaging]="true"
+        [allowResizing]="true"
+        [textWrapSettings]="wrapSettings"
+        [pageSettings]="pageSettings"
+        [locale]="locale"
+        (queryCellInfo)="customizeCellMateriales($event)"
+        width="95%"
+        gridLines="Horizontal"
+      >
+        <e-columns>
+          <e-column field="nombre" headerText="Nombre del material" textAlign="middle"></e-column>
+          <e-column [allowResizing]="false"  width="15%" textAlign="Center">
+            <ng-template #template let-data>
+              <div>
+                <button ejs-button cssClass="btn btn-primary" type="button" title="Ver detalle" (click)="onViewStockMaterial(data)">
+                  Ver
+                </button>
+                <button ejs-button cssClass="btn btn-danger" type="button" title="Eliminar" (click)="onDeleteStockMaterial(data)">
+                  Eliminar
+                </button>
+              </div>
+            </ng-template>
+          </e-column>
+        </e-columns>
+      </ejs-grid>
+    </div>
+  </div>
+
+</div>

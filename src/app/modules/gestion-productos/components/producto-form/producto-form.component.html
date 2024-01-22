@@ -1,0 +1,160 @@
+<div class='contanier-fluid'>
+  <div class='scvs-btn-back mb-40 row align-items-center' (click)='goBack()'>
+    <mat-icon class='scfg-icon arrow_left blue' matSuffix></mat-icon>
+    Volver
+  </div>
+<h2 class="row align-items-center scvs-title-super">
+  Configuración del Producto
+</h2>
+
+  <div class="row">
+
+    <div class="row mt-40  scvs-table-container">
+      <div class='row mt-20 mb-10 align-items-center'>
+        <button
+          *ngIf="this.productoService.actionId === this.enumActionsAbm.view"
+          ejs-button cssClass='e-custom' type='button'
+          title='Editar producto'
+          class='e-flat scfg-icon edit blue pointer mx-2' (click)='onEdit()'>
+        </button>
+      </div>
+
+        <form [formGroup]='this.productoService.form'>
+          <div class='scvs-title row mt-20 mb-10 align-items-center'>
+            Información general
+          </div>
+
+          <div class="row">
+            <div   class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+
+              <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-sm-3'>
+                <ejs-textbox
+                  placeholder='Nombre'
+                  autocomplete='off'
+                  formControlName='nombre'
+                  required
+                  cssClass='e-outline' floatLabelType='Auto'
+                  maxlength='100'
+                  #nombre
+
+                ></ejs-textbox>
+              </div>
+              <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-sm-3'>
+                <ejs-textbox
+                  placeholder='Descripción'
+                  autocomplete='off'
+                  formControlName='descripcion'
+                  required
+                  cssClass='e-outline' floatLabelType='Auto'
+                  maxlength='100'
+                  #descripcion
+
+                ></ejs-textbox>
+              </div>
+              <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+                <!--            <ejs-combobox-->
+                <!--              #codEstado-->
+                <!--              formControlName='tipo'-->
+                <!--              [allowCustom]='false'-->
+                <!--              [autofill]='true'-->
+                <!--              [locale]='this.locale'-->
+                <!--              cssClass='e-outline' floatLabelType='Auto'-->
+                <!--              [dataSource]='this.dataTipos'-->
+                <!--              [fields]='this.fieldsTiposEstado'-->
+                <!--              placeholder='Seleccione el estado del producto'>-->
+                <!--            </ejs-combobox>-->
+              </div>
+              <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-sm-3'>
+                <ejs-numerictextbox
+                  [showSpinButton]='false'
+                  placeholder='Stock mínimo'
+                  autocomplete='off'
+                  formControlName='stockMinimo'
+                  required
+                  cssClass='e-outline' floatLabelType='Auto'
+                  maxlength='100'
+                  #stockMinimo
+
+                ></ejs-numerictextbox>
+              </div>
+              <div class='scvs-title col-12 mt-20 mb-10 align-items-center'>
+                Detalle económico
+              </div>
+              <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-sm-3'>
+                <ejs-numerictextbox
+                  placeholder='Valor unitario'
+                  [showSpinButton]='false'
+                  autocomplete='off'
+                  formControlName='valorUnitario'
+                  required
+                  cssClass='e-outline' floatLabelType='Auto'
+                  maxlength='100'
+                  #valorUnitario
+                ></ejs-numerictextbox>
+              </div>
+
+              <div class='scvs-title col-12 mt-20 mb-10 align-items-center'>
+                Dimensiones
+              </div>
+              <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-sm-3'>
+                <ejs-numerictextbox
+                  [showSpinButton]='false'
+                  placeholder='Peso'
+                  autocomplete='off'
+                  formControlName='peso'
+                  required
+                  cssClass='e-outline' floatLabelType='Auto'
+                  maxlength='100'
+                  #peso
+
+                ></ejs-numerictextbox>
+              </div>
+              <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-sm-3'>
+                <ejs-numerictextbox
+                  [showSpinButton]='false'  placeholder='Altura'
+                  autocomplete='off'
+                  formControlName='altura'
+                  required
+                  cssClass='e-outline' floatLabelType='Auto'
+                  maxlength='100'
+                  #altura
+
+                ></ejs-numerictextbox>
+              </div>
+              <div class='col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mt-sm-3'>
+                <ejs-numerictextbox
+                  [showSpinButton]='false'  placeholder='Anchura'
+                  autocomplete='off'
+                  formControlName='anchura'
+                  required
+                  cssClass='e-outline' floatLabelType='Auto'
+                  maxlength='100'
+                  #anchura
+
+                ></ejs-numerictextbox>
+              </div>
+
+              <div class='col-xs-12 col-md-12 col-xl-12'  *ngIf="this.productoService.actionId!=enumActionsAbm.view">
+                <div class='row justify-content-end '>
+                  <button ejs-button cssClass='e-custom'
+                          class='scvs-btn primary col-xl-2 col-lg-3 col-md-3 col-sm-12 col-xs-12 m-2 py-2' type='button'
+                          title='Guardar'
+                          (click)='this.onSubmit()'>
+                    Guardar
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </form>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+

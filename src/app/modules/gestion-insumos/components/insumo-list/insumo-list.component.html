@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="row">
+    <div class="col-12 mb-40">
+      <h2 class="scvs-btn-back">
+        Módulo Gestión de Insumos
+      </h2>
+    </div>
+
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-lg-right">
+      <button ejs-button class="btn btn-primary py-2" type="button" (click)="onCreateStockInsumo()">
+        Agregar nuevo insumo
+      </button>
+    </div>
+  </div>
+
+  <div class="row scvs-table-container mt-40">
+    <div class="col-12 scvs-title mt-10 mb-10">
+      Insumos
+    </div>
+
+    <div class="col-12 mt-4">
+      <ejs-grid
+        class="mt-4"
+        #grid
+        id="gridInsumos"
+        [dataSource]="dataInsumos"
+        [allowPaging]="true"
+        [allowResizing]="true"
+        [textWrapSettings]="wrapSettings"
+        [pageSettings]="pageSettings"
+        [locale]="locale"
+        (queryCellInfo)="customizeCellInsumos($event)"
+        width="95%"
+        gridLines="Horizontal"
+      >
+        <e-columns>
+          <e-column field="nombre" headerText="Nombre del insumo" textAlign="middle"></e-column>
+          <e-column [allowResizing]="false"  width="15%" textAlign="Center">
+            <ng-template #template let-data>
+              <div>
+                <button ejs-button cssClass="btn btn-primary" type="button" title="Ver insumo" (click)="onViewStockInsumo(data)">
+                  Ver
+                </button>
+                <button ejs-button cssClass="btn btn-danger" type="button" title="Eliminar" (click)="onDeleteStockInsumo(data)">
+                  Eliminar
+                </button>
+              </div>
+            </ng-template>
+          </e-column>
+        </e-columns>
+      </ejs-grid>
+    </div>
+  </div>
+
+</div>
