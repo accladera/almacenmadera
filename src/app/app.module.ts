@@ -20,14 +20,6 @@ import {DialogComponent} from "./components/dialog/dialog.component";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
-import { AlmacenFormComponent } from './modules/gestion-almacenes/components/almacen-form/almacen-form.component';
-import { AlmacenListComponent } from './modules/gestion-almacenes/components/almacen-list/almacen-list.component';
-import { SucursalFormComponent } from './modules/gestion-sucursales/components/sucursal-form/sucursal-form.component';
-import { SucursalListComponent } from './modules/gestion-sucursales/components/sucursal-list/sucursal-list.component';
-import { EmpleadoFormComponent } from './modules/gestion-empleados/components/empleado-form/empleado-form.component';
-import { EmpleadoListComponent } from './modules/gestion-empleados/components/empleado-list/empleado-list.component';
-import { InventarioListComponent } from './modules/gestion-inventarios/components/inventario-list/inventario-list.component';
-import { NotificacionListComponent } from './modules/gestion-notificaciones/components/notificacion-list/notificacion-list.component';
 import {ButtonModule} from "@syncfusion/ej2-angular-buttons";
 import {NumericTextBoxModule, TextBoxModule} from "@syncfusion/ej2-angular-inputs";
 
@@ -39,14 +31,6 @@ import {NumericTextBoxModule, TextBoxModule} from "@syncfusion/ej2-angular-input
     PageErrorComponent,
     MenuBarComponent,
     DialogComponent,
-    AlmacenFormComponent,
-    AlmacenListComponent,
-    SucursalFormComponent,
-    SucursalListComponent,
-    EmpleadoFormComponent,
-    EmpleadoListComponent,
-    InventarioListComponent,
-    NotificacionListComponent,
 
   ],
   imports: [
@@ -58,7 +42,6 @@ import {NumericTextBoxModule, TextBoxModule} from "@syncfusion/ej2-angular-input
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatDialogModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,

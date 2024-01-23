@@ -27,12 +27,14 @@ import {AlmacenFilter} from "../../interfaces/almacen-filter";
 })
 export class ProductoListComponent {
   public locale = 'es-BO';
-  usuarioId="";
+  almacenId="F5064752-9BD6-43B6-9A33-DAD27F2238C3";
   readonly enumActionsAbm = enumActionsAbm;
 
   public dataProductos: object[];
   productos: Producto[] = [];
   formProductoRoute = '/productos/configuracion';
+  formAddProduct = '/productos/almacen';
+
   public dateFormatTable?: object;
   public filterSettings: object;
   public pageSettings!: PageSettingsModel;
@@ -73,13 +75,18 @@ export class ProductoListComponent {
   onInitGetUser(){
     const id = (localStorage.getItem('userId'));
     if(id){
-      this.usuarioId = localStorage.getItem('userId')!;
+      this.almacenId = localStorage.getItem('userId')!;
     }
   }
   onCreateStockProducto(): void {
     this.productoService.actionId = enumActionsAbm.add;
     this.productoService.initializeFormGroup(null);
     this.router.navigateByUrl(this.formProductoRoute);
+  }
+  onAddToInventario(): void {
+    this.productoService.actionId = enumActionsAbm.add;
+    this.productoService.createFormInventarioProducto(null);
+    this.router.navigateByUrl(this.formAddProduct);
   }
 
   onViewStockProducto(item: Producto): void {
@@ -148,7 +155,7 @@ export class ProductoListComponent {
     // }
   }
   async loadProductos(): Promise<void> {
-    const filter: AlmacenFilter= {idAlmacen: this.usuarioId} ;
+    const filter: AlmacenFilter= {idAlmacen: this.almacenId} ;
     this.productoService.getAllByAlmacenId(filter).subscribe({
         next: (res: any) => {
           if (res !== null) {

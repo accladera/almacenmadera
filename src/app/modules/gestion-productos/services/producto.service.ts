@@ -6,13 +6,16 @@ import {Observable} from "rxjs";
 import {Producto} from "../interfaces/producto";
 import {enumActionsAbm} from "../../../enums/enumActionsAbm";
 import {AlmacenFilter} from "../interfaces/almacen-filter";
+import {InventarioProducto} from "../interfaces/inventarioProducto";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductoService {
-  baseUrl = `${environment.apiUrl}Productos`;
+  baseUrlProducto = `${environment.apiUrl}Producto`;
+  baseUrlAlmacen = `${environment.apiUrl}Almacen`;
   form: FormGroup = new FormGroup({});
+  formInventario: FormGroup = new FormGroup({});
   producto!: Producto;
   // actionId: number = enumActionsAbm.view;
   actionId: number = enumActionsAbm.add;
@@ -52,23 +55,38 @@ export class ProductoService {
     });
 
   }
+
+  createFormInventarioProducto(inventarioProducto: InventarioProducto| null): void {
+    this.formInventario = this.formBuilder.group({
+      IdProducto: new FormControl(inventarioProducto ? inventarioProducto.idProducto : ''),
+      idAlmacen: new FormControl(inventarioProducto ? inventarioProducto.idAlmacen : ''),
+    });
+
+  }
   save(producto: Producto): Observable<any> {
-    const url = `${this.baseUrl}`;
+    const url = `${this.baseUrlProducto}`;
     return this.http.post<Producto>(url, producto);
   }
   update(producto: Producto): Observable<any> {
-    const url = `${this.baseUrl}`;
+    const url = `${this.baseUrlProducto}`;
     return this.http.put<Producto>(url, producto);
   }
   delete(productoId: string): Observable<any>{
-    const url = `${this.baseUrl}`;
+    const url = `${this.baseUrlProducto}`;
     return this.http.delete<any>(url, {body: {id: productoId} });
   }
+  getAll(): Observable<any> {
+    const url = `${this.baseUrlProducto}/all`;
+    return this.http.get<Producto[]>(url);
+  }
   getAllByAlmacenId(filter: AlmacenFilter): Observable<any> {
-    const url = `${this.baseUrl}/byAlmacen`;
+    const url = `${this.baseUrlProducto}/byAlmacen`;
     return this.http.post<Producto[]>(url,filter);
   }
-
+  addProductoToAlmacen(inventario: InventarioProducto): Observable<any> {
+    const url = `${this.baseUrlAlmacen}/almacenarProducto`;
+    return this.http.post<Producto>(url,inventario);
+  }
 
 
 

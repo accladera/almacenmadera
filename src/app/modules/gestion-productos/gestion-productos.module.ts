@@ -19,6 +19,7 @@ import {
   ResizeService, SearchService,
   ToolbarService
 } from "@syncfusion/ej2-angular-grids";
+import { ProductoIncludeComponent } from './components/producto-include/producto-include.component';
 
 
 
@@ -26,6 +27,7 @@ import {
   declarations: [
     ProductoFormComponent,
     ProductoListComponent,
+    ProductoIncludeComponent,
 
   ],
   imports: [

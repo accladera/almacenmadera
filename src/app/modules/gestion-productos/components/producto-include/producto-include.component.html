@@ -1,0 +1,62 @@
+<div class='contanier-fluid'>
+  <div class='scvs-btn-back mb-40 row align-items-center' (click)='goBack()'>
+    <mat-icon class='scfg-icon arrow_left blue' matSuffix></mat-icon>
+    Volver
+  </div>
+  <h2 class="row align-items-center scvs-title-super">
+    Configuración de Almacen
+  </h2>
+
+  <div class="row">
+
+    <div class="row mt-40  scvs-table-container">
+
+
+      <form [formGroup]='this.productoService.formInventario'>
+        <div class='scvs-title row mt-20 mb-10 align-items-center'>
+        Selecciona el producto que el almacen estarà almacenando
+        </div>
+
+        <div class="row">
+          <div   class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+            <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+              <div class='col-xl-4 col-md-6 col-sm-12 mt-3'>
+                <ejs-combobox
+                  #IdProducto
+                  allowFiltering='false'
+                  formControlName='IdProducto'
+                  [allowCustom]='false'
+                  [autofill]='true'
+                  [locale]='this.locale'
+                  cssClass='e-outline' floatLabelType='Auto'
+                  [dataSource]='this.dataProductos'
+                  [fields]='this.fieldsProductos'
+                  placeholder='Seleccione uno'>
+                </ejs-combobox>
+              </div>
+            </div>
+
+            <div class='col-xs-12 col-md-12 col-xl-12'  *ngIf="this.productoService.actionId!=enumActionsAbm.view">
+              <div class='row justify-content-end '>
+                <button ejs-button cssClass='e-custom'
+                        class='scvs-btn primary col-xl-2 col-lg-3 col-md-3 col-sm-12 col-xs-12 m-2 py-2' type='button'
+                        title='Guardar'
+                        (click)='this.onSubmit()'>
+                  Guardar
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+

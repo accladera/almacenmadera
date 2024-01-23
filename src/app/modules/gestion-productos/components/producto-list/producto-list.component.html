@@ -11,6 +11,11 @@
           Agregar nuevo producto
         </button>
       </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 text-lg-right">
+        <button ejs-button class="btn btn-primary py-2" type="button" (click)="onAddToInventario()">
+          Incluir producto
+        </button>
+      </div>
     </div>
 
     <div class="row scvs-table-container mt-40">
@@ -23,6 +28,8 @@
           class="mt-4"
           #grid
           id="gridProductos"
+          [toolbar]='toolbarOptions'
+
           [dataSource]="dataProductos"
           [allowPaging]="true"
           [allowResizing]="true"
@@ -34,8 +41,14 @@
           gridLines="Horizontal"
         >
           <e-columns>
-            <e-column field="nombre" headerText="Nombre del producto" textAlign="middle"></e-column>
-            <e-column [allowResizing]="false"  width="15%" textAlign="Center">
+            <e-column field="nombre" width="240" headerText="Nombre del producto" textAlign="middle"></e-column>
+            <e-column field="descripcion" width="280" headerText="Descripción" textAlign="middle"></e-column>
+            <e-column field="valorUnitario" headerText="Varor c/u" textAlign="middle"></e-column>
+            <e-column field="stockMinimo" headerText="Cant. mínima" textAlign="middle"></e-column>
+            <e-column field="peso" headerText="peso" textAlign="middle"></e-column>
+            <e-column field="altura" headerText="altura" textAlign="middle"></e-column>
+            <e-column field="anchura" headerText="anchura" textAlign="middle"></e-column>
+            <e-column [allowResizing]="false"   textAlign="Center">
               <ng-template #template let-data>
                 <div>
                   <button ejs-button cssClass="btn btn-primary" type="button" title="Ver producto" (click)="onViewStockProducto(data)">
